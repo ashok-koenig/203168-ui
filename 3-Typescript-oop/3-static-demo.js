@@ -45,6 +45,10 @@ var Bank = /** @class */ (function () {
     Bank.prototype.displayBalance = function () {
         console.log("".concat(this._accountName, "-").concat(this.accountNumber, " balance is ").concat(this._accountBalance));
     };
+    // Static method
+    Bank.getLastAccontNumber = function () {
+        console.log("Last Account number allocated: ".concat(Bank.lastAccountNumber));
+    };
     Bank.lastAccountNumber = 100;
     return Bank;
 }());
@@ -52,3 +56,4 @@ var acc1 = new Bank('John Peter', 1000);
 acc1.displayBalance();
 var acc2 = new Bank('John Doe', 2000);
 acc2.displayBalance();
+Bank.getLastAccontNumber();

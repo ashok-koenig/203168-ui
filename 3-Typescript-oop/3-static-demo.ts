@@ -40,9 +40,14 @@ class Bank{
    public displayBalance():void{
         console.log(`${this._accountName}-${this.accountNumber} balance is ${this._accountBalance}`);        
     }
+    // Static method
+    static getLastAccontNumber(){
+        console.log(`Last Account number allocated: ${Bank.lastAccountNumber}`);        
+    }
 }
 const acc1 = new Bank('John Peter', 1000)
 acc1.displayBalance()
 
 const acc2 = new Bank('John Doe', 2000)
 acc2.displayBalance()
+Bank.getLastAccontNumber()
