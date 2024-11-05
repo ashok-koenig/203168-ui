@@ -37,5 +37,20 @@ var Student = /** @class */ (function (_super) {
     };
     return Student;
 }(Person));
+var Teacher = /** @class */ (function (_super) {
+    __extends(Teacher, _super);
+    function Teacher(firstName, lastName, age, subject) {
+        var _this = _super.call(this, firstName, lastName, age) || this;
+        _this.subject = subject;
+        return _this;
+    }
+    Teacher.prototype.introduce = function () {
+        _super.prototype.introduce.call(this);
+        console.log("Handling ".concat(this.subject, " subject"));
+    };
+    return Teacher;
+}(Person));
 var john = new Student('John', 'Peter', 13, 7);
 john.introduce();
+var smith = new Teacher('John', 'Smith', 30, 'Maths');
+smith.introduce();

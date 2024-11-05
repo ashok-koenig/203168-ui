@@ -17,5 +17,18 @@ class Student extends Person{
     }
 }
 
+class Teacher extends Person{
+    constructor(firstName: string, lastName: string, age:number, private subject: string){
+        super(firstName, lastName, age)
+    }
+    public introduce(): void {
+        super.introduce()
+        console.log(`Handling ${this.subject} subject`);        
+    }
+}
+
 var john = new Student('John', 'Peter', 13,7)
 john.introduce()
+
+var smith = new Teacher('John', 'Smith', 30, 'Maths')
+smith.introduce()
