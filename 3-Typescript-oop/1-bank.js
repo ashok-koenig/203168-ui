@@ -31,6 +31,7 @@ var Bank = /** @class */ (function () {
 }());
 var obj = new Bank(101, 'John Peter', 1000);
 obj.displayBalance();
+// obj.accountBalance=27387387
 obj.deposit(100);
 obj.displayBalance();
 obj.withdraw(500);
