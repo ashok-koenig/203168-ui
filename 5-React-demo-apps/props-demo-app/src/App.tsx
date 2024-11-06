@@ -6,14 +6,18 @@ import ProductList from './components/products/ProductList'
 
 function App() {  
   const products = [
-    {id: 1, title: "iPhone 16", category: "SmartPhone", price: 76778},
+    {id: 1, title: "iPhone 16", category: "SmartPhone", price: 76778, discount: true},
     {id: 2, title: "iPhone 15", category: "SmartPhone", price: 56565},
     {id: 3, title: "iPhone 14", category: "SmartPhone", price: 45454}
   ]
+  const handleClick = (msg: string)=>{alert("Button click works..."+ msg)}
   return (
     <>
+    <button onClick={()=>handleClick("Welcome")}>Click me</button>
      <h1>Working with Props - Products demo</h1>
-     <ProductList products = {products}/>
+     <ProductList products = {products}>
+      <h1>Special Offer: 20%</h1>
+     </ProductList>
      {/* <MyClassComponent />
      <MyFunctionalComponent /> */}
     </>

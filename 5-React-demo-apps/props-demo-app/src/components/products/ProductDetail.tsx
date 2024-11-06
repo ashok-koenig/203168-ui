@@ -1,15 +1,17 @@
 import React from 'react'
+import PromoOffer from './PromoOffer'
 
 export interface ProductDetailProps {
     id: number
     title: string
     category: string
     price: number
+    discount?: boolean
 }
 
 export default function ProductDetail(props: ProductDetailProps) {
     // De-structuring values from props
-    const {title, category, price} = props
+    const {title, category, price, discount= false} = props
   return (
     <div>
         <table border={1}>
@@ -25,6 +27,7 @@ export default function ProductDetail(props: ProductDetailProps) {
                 <td>Product price</td>
                 <th>{price}</th>
             </tr>
+            {discount && <PromoOffer />}
         </table>
     </div>
   )
