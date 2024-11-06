@@ -12,6 +12,11 @@ export interface ProductDetailProps {
 export default function ProductDetail(props: ProductDetailProps) {
     // De-structuring values from props
     const {title, category, price, discount= false} = props
+    let cartCount = 0;
+    const handleAddToCart = () =>{
+        cartCount++
+        console.log(cartCount);        
+    }
   return (
     <div>
         <table border={1}>
@@ -28,6 +33,14 @@ export default function ProductDetail(props: ProductDetailProps) {
                 <th>{price}</th>
             </tr>
             {discount && <PromoOffer />}
+            <tr>
+                <td>
+                    Count: {cartCount}
+                </td>
+                <td>
+                    <button onClick={handleAddToCart}>Add to Cart</button>
+                </td>
+            </tr>
         </table>
     </div>
   )
