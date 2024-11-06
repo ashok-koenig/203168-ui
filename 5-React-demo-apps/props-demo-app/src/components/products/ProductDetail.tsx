@@ -7,15 +7,17 @@ export interface ProductDetailProps {
     category: string
     price: number
     discount?: boolean
+    addTotalCartCount?: ()=>void
 }
 
 export default function ProductDetail(props: ProductDetailProps) {
     // De-structuring values from props
-    const {title, category, price, discount= false} = props
+    const {title, category, price, discount= false, addTotalCartCount = ()=>{}} = props
     // let cartCount = 0;
     const [cartCount, setCartCount] = useState(0)
     const handleAddToCart = () =>{
-      setCartCount((count)=> count + 1)    
+      setCartCount((count)=> count + 1)   
+       addTotalCartCount();
     }
   return (
     <div>
