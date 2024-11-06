@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PromoOffer from './PromoOffer'
 
 export interface ProductDetailProps {
@@ -12,10 +12,10 @@ export interface ProductDetailProps {
 export default function ProductDetail(props: ProductDetailProps) {
     // De-structuring values from props
     const {title, category, price, discount= false} = props
-    let cartCount = 0;
+    // let cartCount = 0;
+    const [cartCount, setCartCount] = useState(0)
     const handleAddToCart = () =>{
-        cartCount++
-        console.log(cartCount);        
+      setCartCount((count)=> count + 1)    
     }
   return (
     <div>

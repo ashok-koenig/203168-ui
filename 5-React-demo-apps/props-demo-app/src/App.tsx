@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './App.css'
 import ProductList from './components/products/ProductList'
 // import MyClassComponent from './components/MyClassComponent'
@@ -5,6 +6,8 @@ import ProductList from './components/products/ProductList'
 
 
 function App() {  
+  console.log(useState(0));
+  
   const products = [
     {id: 1, title: "iPhone 16", category: "SmartPhone", price: 76778, discount: true},
     {id: 2, title: "iPhone 15", category: "SmartPhone", price: 56565},
