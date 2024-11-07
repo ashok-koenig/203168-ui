@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import PromoOffer from './PromoOffer'
 import useCartCounter from '../../custom-hooks/useCartCounter'
+import { Data } from '../../App'
 
 export interface ProductDetailProps {
     id: number
@@ -14,6 +15,7 @@ export interface ProductDetailProps {
 export default function ProductDetail(props: ProductDetailProps) {
     // De-structuring values from props
     const {title, category, price, discount= false, addTotalCartCount = ()=>{}} = props
+   const data = useContext(Data)
     // let cartCount = 0;
     // const [cartCount, setCartCount] = useState(0)
     // const handleAddToCart = () =>{
@@ -25,6 +27,7 @@ export default function ProductDetail(props: ProductDetailProps) {
   return (
 
     <div>
+        <p>Data from Context: {data}</p>
         <table border={1}>
             <tr>
                 <td>Product Title</td>
