@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PromoOffer from './PromoOffer'
+import useCartCounter from '../../custom-hooks/useCartCounter'
 
 export interface ProductDetailProps {
     id: number
@@ -14,12 +15,15 @@ export default function ProductDetail(props: ProductDetailProps) {
     // De-structuring values from props
     const {title, category, price, discount= false, addTotalCartCount = ()=>{}} = props
     // let cartCount = 0;
-    const [cartCount, setCartCount] = useState(0)
-    const handleAddToCart = () =>{
-      setCartCount((count)=> count + 1)   
-       addTotalCartCount();
-    }
+    // const [cartCount, setCartCount] = useState(0)
+    // const handleAddToCart = () =>{
+    //   setCartCount((count)=> count + 1)   
+    //    addTotalCartCount();
+    // }
+    let {cartCount: cartCount, addCartCount: handleAddToCart} = useCartCounter(0)
+
   return (
+
     <div>
         <table border={1}>
             <tr>
@@ -40,7 +44,7 @@ export default function ProductDetail(props: ProductDetailProps) {
                     Count: {cartCount}
                 </td>
                 <td>
-                    <button onClick={handleAddToCart}>Add to Cart</button>
+                    <button onClick={()=>{handleAddToCart(); addTotalCartCount();}}>Add to Cart</button>
                 </td>
             </tr>
         </table>

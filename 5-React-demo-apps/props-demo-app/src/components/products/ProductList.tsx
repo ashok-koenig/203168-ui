@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import ProductDetail, { ProductDetailProps } from './ProductDetail'
+import useCartCounter from '../../custom-hooks/useCartCounter'
 
 interface ProductListProps{
     children:any
@@ -7,12 +8,12 @@ interface ProductListProps{
 }
 
 export default function ProductList(props: ProductListProps) {
-    const [totalCartCount, setTotalCartCount]=useState(0)
+    // const [totalCartCount, setTotalCartCount]=useState(0)
     const {children, products} = props
-
-    const addTotalCartCount =()=>{
-        setTotalCartCount((totalCartCount)=> totalCartCount + 1)
-    }
+    let {cartCount: totalCartCount, addCartCount: addTotalCartCount} = useCartCounter(0)
+    // const addTotalCartCount =()=>{
+    //     setTotalCartCount()
+    // }
   return (
     <div>
         <h1>Products List</h1>
