@@ -17,8 +17,16 @@ export default function FormikForm() {
             if(!values.course) errors.course = 'Course is required'
             return errors;
         },
-        onSubmit: (values) =>{
-            console.log(values);            
+        onSubmit: (values, {setSubmitting, resetForm, setErrors}) =>{
+            setTimeout(()=>{
+                if(values.email == 'test@email.com'){
+                    setErrors({email: 'This email is already registered'})
+                }else{
+                    console.log('Form submitted successfully', values);
+                    resetForm()
+                }
+                setSubmitting(false)
+            }, 2000)       
         }
     })
     // console.log(formik);    
@@ -57,7 +65,7 @@ export default function FormikForm() {
             {formik.errors.course && <span className="error">{formik.errors.course}</span>}
         </div>
         <div>
-            <button type="submit">Register</button>
+            <button disabled={formik.isSubmitting} type="submit">{formik.isSubmitting?"Please wait...":"Register"}</button>
         </div>
     </form>
 </div>
