@@ -7,18 +7,25 @@ import StateFrom from './components/StateFrom'
 import RefStateForm from './components/RefStateForm'
 import FormikForm from './components/FormikForm'
 import FormikYupForm from './components/FormikYupForm'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import DefaultLayout from './layouts/DefaultLayout'
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <DefaultLayout />,
+      children:[
+        {index: true, element: <BasicForm />},
+        {path: 'state-form', element: <StateFrom />},
+        {path: 'ref-state-form', element: <RefStateForm />},
+        {path: 'formik-form', element: <FormikForm />},
+        {path: 'formik-yup-form', element: <FormikYupForm />}
+      ]
+    }
+  ])
  
-  return (
-    <>
-      {/* <BasicForm /> */}
-      {/* <StateFrom /> */}
-      {/* <RefStateForm /> */}
-      {/* <FormikForm /> */}
-      <FormikYupForm />
-    </>
-  )
+  return ( <RouterProvider router={router}/> )
 }
 
 export default App
