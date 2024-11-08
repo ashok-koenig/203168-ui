@@ -1,9 +1,16 @@
 import React, { useRef, useState } from 'react'
 
 export default function RefStateForm() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        gender: '',
+        course: ''
+    })
     const nameRef = useRef<HTMLInputElement>(null)
     const emailRef = useRef<HTMLInputElement>(null)
-    const genderRef = useRef<HTMLInputElement>(null)
+    const maleRef = useRef<HTMLInputElement>(null)
+    const femaleRef = useRef<HTMLInputElement>(null)
     const courseRef = useRef<HTMLSelectElement>(null)
     const [errors, setErrors] = useState<{ [key: string]: string}>({})
    
@@ -11,7 +18,7 @@ export default function RefStateForm() {
         const currentErrors: {[key: string]: string} = {}
         if(!nameRef.current?.value) currentErrors.name = 'Name is required'
         if(!emailRef.current?.value) currentErrors.email = 'Email is required'
-        if(!genderRef.current?.checked) currentErrors.gender = 'Gender is required'
+        if(maleRef.current?.checked==false &&  femaleRef.current?.checked==false) currentErrors.gender = 'Gender is required'
         if(!courseRef.current?.value) currentErrors.course = 'Course is required'
         setErrors(currentErrors)
         return Object.keys(currentErrors).length === 0
@@ -19,10 +26,18 @@ export default function RefStateForm() {
     const handleSubmit = (e: React.FormEvent) =>{
         e.preventDefault();
         if(validateFrom()){
-             console.log(nameRef.current?.value);  
-             console.log(emailRef.current?.value); 
-             console.log(genderRef.current?.value); 
-             console.log(courseRef.current?.value);    
+            //  console.log(nameRef.current?.value);  
+            //  console.log(emailRef.current?.value); 
+            //  console.log(maleRef.current?.checked? maleRef.current?.value: femaleRef.current?.value); 
+            //  console.log(courseRef.current?.value); 
+            if(nameRef.current && emailRef.current && maleRef.current && femaleRef.current && courseRef.current) {
+                let currentFormData = {name:nameRef.current.value, email: emailRef.current.value, gender: maleRef.current.checked? maleRef.current.value: femaleRef.current.value, course: courseRef.current.value }
+
+                setFormData(currentFormData)
+                console.log(currentFormData);                
+            }
+           
+
         }          
     }
   return (
@@ -42,10 +57,10 @@ export default function RefStateForm() {
             <div>
                 <label>Gender:</label>
                 <label>
-                    <input type="radio" name="gender" ref={genderRef} value="male" /> Male
+                    <input type="radio" name="gender" ref={maleRef} value="male" /> Malef
                 </label>
                 <label>
-                    <input type="radio" name="gender" value="female" /> Female
+                    <input type="radio" name="gender" ref={femaleRef} value="female" /> Female
                 </label>
                 {errors.gender && <span className="error">{errors.gender}</span>}
             </div>
