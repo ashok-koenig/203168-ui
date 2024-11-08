@@ -5,6 +5,7 @@ import './App.css'
 import BasicForm from './components/BasicForm'
 import StateFrom from './components/StateFrom'
 import RefStateForm from './components/RefStateForm'
+import FormikForm from './components/FormikForm'
 
 function App() {
  
@@ -12,7 +13,8 @@ function App() {
     <>
       {/* <BasicForm /> */}
       {/* <StateFrom /> */}
-      <RefStateForm />
+      {/* <RefStateForm /> */}
+      <FormikForm />
     </>
   )
 }
