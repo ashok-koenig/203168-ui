@@ -4,13 +4,15 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import BasicForm from './components/BasicForm'
 import StateFrom from './components/StateFrom'
+import RefStateForm from './components/RefStateForm'
 
 function App() {
  
   return (
     <>
       {/* <BasicForm /> */}
-      <StateFrom />
+      {/* <StateFrom /> */}
+      <RefStateForm />
     </>
   )
 }
